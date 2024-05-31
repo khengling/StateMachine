@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\ns">
+      <UniqueIdentifier>{50697fdb-7d92-4900-ac0c-565126f2b5d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ns\implementation">
+      <UniqueIdentifier>{6d90ac0e-363e-4795-b618-43235b6b631e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ns">
+      <UniqueIdentifier>{4674d7e1-3953-4ba8-ad02-d2c94ab3ef6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ns\implementation">
+      <UniqueIdentifier>{6f468804-655e-4ead-bc86-b0466a1736a6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ns\implementation\tsc.cpp">
+      <Filter>Source Files\ns\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\implementation\device_promise_base.cpp">
+      <Filter>Source Files\ns\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\device_executor.cpp">
+      <Filter>Source Files\ns</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\implementation\current_device_executor.cpp">
+      <Filter>Source Files\ns\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\implementation\device_state_promise.cpp">
+      <Filter>Source Files\ns\implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\device_state.cpp">
+      <Filter>Source Files\ns</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\device_state_machine.cpp">
+      <Filter>Source Files\ns</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\ticks.cpp">
+      <Filter>Source Files\ns</Filter>
+    </ClCompile>
+    <ClCompile Include="ns\ticks_after.cpp">
+      <Filter>Source Files\ns</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ns\implementation\tsc.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\device_fwd_decl.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\implementation\device_promise_base.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\implementation\timer_context.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\device_executor.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\implementation\device_fwd_decl.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\implementation\current_device_executor.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\implementation\device_task_promise.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\device_task.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\implementation\device_task_noexcept_promise.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\device_task_noexcept.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\implementation\device_state_promise.h">
+      <Filter>Header Files\ns\implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\device_state.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\device_state_machine.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\ticks.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+    <ClInclude Include="ns\ticks_after.h">
+      <Filter>Header Files\ns</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
