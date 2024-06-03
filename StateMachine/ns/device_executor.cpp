@@ -47,7 +47,7 @@ bool ns::device_executor::is_empty() const noexcept
 	return first_promise_in_chain == nullptr;
 }
 
-inline void ns::device_executor::enqueue(implementation::device_promise_base& promise) noexcept
+void ns::device_executor::enqueue(implementation::device_promise_base& promise) noexcept
 {
 	if (!first_promise_in_chain) [[unlikely]]
 	{
