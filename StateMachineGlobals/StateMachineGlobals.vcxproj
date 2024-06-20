@@ -13,19 +13,19 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6cb40b4b-9fd6-40ab-b712-823a6a95620a}</ProjectGuid>
-    <RootNamespace>StateMachine</RootNamespace>
+    <ProjectGuid>{635c337b-b639-4d5d-8fc7-ff9a935e081b}</ProjectGuid>
+    <RootNamespace>StateMachineGlobals</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -74,38 +74,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ns\device_executor.cpp" />
-    <ClCompile Include="ns\device_state.cpp" />
-    <ClCompile Include="ns\device_state_machine.cpp" />
     <ClCompile Include="ns\implementation\current_device_executor.cpp" />
-    <ClCompile Include="ns\implementation\device_promise_base.cpp" />
-    <ClCompile Include="ns\implementation\device_state_promise.cpp" />
-    <ClCompile Include="ns\implementation\tsc.cpp" />
-    <ClCompile Include="ns\ticks.cpp" />
-    <ClCompile Include="ns\ticks_after.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ns\device_executor.h" />
-    <ClInclude Include="ns\device_fwd_decl.h" />
-    <ClInclude Include="ns\device_state.h" />
-    <ClInclude Include="ns\device_state_machine.h" />
-    <ClInclude Include="ns\device_task.h" />
-    <ClInclude Include="ns\device_task_noexcept.h" />
-    <ClInclude Include="ns\implementation\current_device_executor.h" />
-    <ClInclude Include="ns\implementation\device_fwd_decl.h" />
-    <ClInclude Include="ns\implementation\device_promise_base.h" />
-    <ClInclude Include="ns\implementation\device_state_promise.h" />
-    <ClInclude Include="ns\implementation\device_task_noexcept_promise.h" />
-    <ClInclude Include="ns\implementation\device_task_promise.h" />
-    <ClInclude Include="ns\implementation\timer_context.h" />
-    <ClInclude Include="ns\implementation\tsc.h" />
-    <ClInclude Include="ns\ticks.h" />
-    <ClInclude Include="ns\ticks_after.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\StateMachineGlobals\StateMachineGlobals.vcxproj">
-      <Project>{635c337b-b639-4d5d-8fc7-ff9a935e081b}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

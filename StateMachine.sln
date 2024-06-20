@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StateMachine", "StateMachine\StateMachine.vcxproj", "{6CB40B4B-9FD6-40AB-B712-823A6A95620A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StateMachineGlobals", "StateMachineGlobals\StateMachineGlobals.vcxproj", "{635C337B-B639-4D5D-8FC7-FF9A935E081B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{6CB40B4B-9FD6-40AB-B712-823A6A95620A}.Debug|x64.Build.0 = Debug|x64
 		{6CB40B4B-9FD6-40AB-B712-823A6A95620A}.Release|x64.ActiveCfg = Release|x64
 		{6CB40B4B-9FD6-40AB-B712-823A6A95620A}.Release|x64.Build.0 = Release|x64
+		{635C337B-B639-4D5D-8FC7-FF9A935E081B}.Debug|x64.ActiveCfg = Debug|x64
+		{635C337B-B639-4D5D-8FC7-FF9A935E081B}.Debug|x64.Build.0 = Debug|x64
+		{635C337B-B639-4D5D-8FC7-FF9A935E081B}.Release|x64.ActiveCfg = Release|x64
+		{635C337B-B639-4D5D-8FC7-FF9A935E081B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

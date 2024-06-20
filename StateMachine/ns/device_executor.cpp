@@ -7,16 +7,16 @@
 
 ns::device_executor::device_executor()
 	: tsc_freq_in_megahertz(implementation::get_tsc_frequency_in_megahertz())
-	, previous(implementation::current_device_executor)
+	, previous(implementation::set_current_device_executor(this))
 {
-	implementation::current_device_executor = this;
 }
 
 ns::device_executor::~device_executor()
 {
-	assert(implementation::current_device_executor == this);
-
-	implementation::current_device_executor = previous;
+	{
+		[[maybe_unused]] auto const tmp = implementation::set_current_device_executor(previous);
+		assert(tmp == this);
+	}
 
 	for (auto i = first_promise_in_chain; i; i = i->unlink_this())
 	{

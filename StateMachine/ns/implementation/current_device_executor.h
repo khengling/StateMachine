@@ -4,5 +4,7 @@
 
 namespace ns::implementation
 {
-	inline thread_local device_executor* current_device_executor = nullptr;
+	device_executor* get_current_device_executor() noexcept;
+
+	device_executor* set_current_device_executor(device_executor* new_device_executor) noexcept;
 }
