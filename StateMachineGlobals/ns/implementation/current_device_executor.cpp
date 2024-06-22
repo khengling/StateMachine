@@ -13,7 +13,7 @@ namespace ns::implementation
 	}
 
 	// returns the old device executor
-	__declspec(dllexport) device_executor* set_current_device_executor(device_executor* const new_device_executor) noexcept
+	__declspec(dllexport) device_executor* set_current_device_executor(device_executor* new_device_executor) noexcept
 	{
 		auto const tmp = current_device_executor;
 		current_device_executor = new_device_executor;
