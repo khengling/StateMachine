@@ -1,6 +1,7 @@
 #pragma once
 
 #include "implementation/device_fwd_decl.h"
+#include "implementation/device_promise_base.h"
 #include <cstdint>
 
 namespace ns
@@ -28,9 +29,11 @@ namespace ns
 
 		void enqueue(implementation::device_promise_base& promise) noexcept;
 
+		struct null_promise : implementation::device_promise_base {};
+
 		std::int64_t const tsc_freq_in_megahertz;
 		device_executor* previous;
-		implementation::device_promise_base* first_promise_in_chain = nullptr;
-		implementation::device_promise_base* last_promise_in_chain = nullptr;
+		null_promise promise_chain_head_node;
+		null_promise promise_chain_tail_node;
 	};
 }

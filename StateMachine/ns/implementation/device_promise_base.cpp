@@ -4,19 +4,40 @@
 #include <cassert>
 #include <coroutine>
 
+auto ns::implementation::device_promise_base::prev_promise() const noexcept -> device_promise_base*
+{
+	return prev_promise_in_chain;
+}
+
+auto ns::implementation::device_promise_base::next_promise() const noexcept -> device_promise_base*
+{
+	return next_promise_in_chain;
+}
+
 void ns::implementation::device_promise_base::link_next(device_promise_base& next_promise) noexcept
 {
-	assert(!next_promise_in_chain);
-	assert(!next_promise.prev_promise_in_chain);
+	assert(next_promise_in_chain == nullptr);
+	assert(next_promise.prev_promise_in_chain == nullptr);
 
 	next_promise_in_chain = &next_promise;
 	next_promise.prev_promise_in_chain = this;
 }
 
-auto ns::implementation::device_promise_base::unlink_this() noexcept -> device_promise_base*
+auto ns::implementation::device_promise_base::unlink_from_prev() noexcept -> device_promise_base*
 {
-	assert(!prev_promise_in_chain);
+	auto const return_value = prev_promise_in_chain;
 
+	if (prev_promise_in_chain) [[likely]]
+	{
+		prev_promise_in_chain->next_promise_in_chain = nullptr;
+		prev_promise_in_chain = nullptr;
+	}
+
+	return return_value;
+}
+
+auto ns::implementation::device_promise_base::unlink_from_next() noexcept -> device_promise_base*
+{
 	auto const return_value = next_promise_in_chain;
 
 	if (next_promise_in_chain) [[likely]]

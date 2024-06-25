@@ -1,6 +1,5 @@
 #include "device_executor.h"
 #include "implementation/tsc.h"
-#include "implementation/device_promise_base.h"
 #include "implementation/current_device_executor.h"
 
 #include <cassert>
@@ -9,6 +8,7 @@ ns::device_executor::device_executor()
 	: tsc_freq_in_megahertz(implementation::get_tsc_frequency_in_megahertz())
 	, previous(implementation::set_current_device_executor(this))
 {
+	promise_chain_head_node.link_next(promise_chain_tail_node);
 }
 
 ns::device_executor::~device_executor()
@@ -18,7 +18,7 @@ ns::device_executor::~device_executor()
 		assert(tmp == this);
 	}
 
-	for (auto i = first_promise_in_chain; i; i = i->unlink_this())
+	for (auto i = promise_chain_head_node.next_promise(); i != &promise_chain_tail_node; i = i->unlink_from_next())
 	{
 		// do nothing
 	}
@@ -26,14 +26,19 @@ ns::device_executor::~device_executor()
 
 void ns::device_executor::tick() noexcept
 {
-	auto const first = first_promise_in_chain;
-
-	first_promise_in_chain = nullptr;
-	last_promise_in_chain = nullptr;
-
-	for (auto i = first; i;)
+	if (is_empty())
 	{
-		auto const next = i->unlink_this();
+		return;
+	}
+
+	auto const first = promise_chain_head_node.unlink_from_next();
+	promise_chain_tail_node.unlink_from_prev();
+
+	promise_chain_head_node.link_next(promise_chain_tail_node);
+
+	for (auto i = first; i != nullptr;)
+	{
+		auto const next = i->unlink_from_next();
 		if (!i->try_resume(tsc_freq_in_megahertz))
 		{
 			enqueue(*i);
@@ -44,20 +49,18 @@ void ns::device_executor::tick() noexcept
 
 bool ns::device_executor::is_empty() const noexcept
 {
-	return first_promise_in_chain == nullptr;
+	return promise_chain_head_node.next_promise() == &promise_chain_tail_node;
 }
 
 void ns::device_executor::enqueue(implementation::device_promise_base& promise) noexcept
 {
-	if (!first_promise_in_chain) [[unlikely]]
-	{
-		first_promise_in_chain = &promise;
-	}
+	assert(promise.next_promise() == nullptr);
+	assert(promise.prev_promise() == nullptr);
 
-	if (last_promise_in_chain) [[likely]]
-	{
-		last_promise_in_chain->link_next(promise);
-	}
+	auto const last = promise_chain_tail_node.unlink_from_prev();
+	
+	assert(last != nullptr);
+	last->link_next(promise);
 
-	last_promise_in_chain = &promise;
+	promise.link_next(promise_chain_tail_node);
 }

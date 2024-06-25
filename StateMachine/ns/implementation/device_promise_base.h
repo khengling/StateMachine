@@ -10,11 +10,19 @@ namespace ns::implementation
 	class device_promise_base
 	{
 	public:
+		[[nodiscard]]
+		device_promise_base* prev_promise() const noexcept;
+
+		[[nodiscard]]
+		device_promise_base* next_promise() const noexcept;
+
 		void link_next(device_promise_base& next_promise) noexcept;
 
+		// returns previous promise in chain (nullptr if there's no previous promise)
+		device_promise_base* unlink_from_prev() noexcept;
+
 		// returns next promise in chain (nullptr if there's no next promise)
-		[[nodiscard]]
-		device_promise_base* unlink_this() noexcept;
+		device_promise_base* unlink_from_next() noexcept;
 
 		static constexpr auto& await_transform(ticks const& awaitable) noexcept
 		{
